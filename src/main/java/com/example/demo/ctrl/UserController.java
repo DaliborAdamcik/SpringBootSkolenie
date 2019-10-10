@@ -24,12 +24,17 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User getAllUsers(@PathVariable("id") Long id) {
+    public User getUserById(@PathVariable("id") Long id) {
         Optional<User> ousr = userRepo.findById(id);
         if (ousr.isPresent())
             return ousr.get();
 
         throw new UserNotFoundException(String.format("User with id %s not found", id));
+    }
+
+    @GetMapping("/raw/{id}")
+    public Optional<User> getUserByIdRaw(@PathVariable("id") Long id) {
+        return userRepo.findById(id);
     }
 
     @PostMapping
