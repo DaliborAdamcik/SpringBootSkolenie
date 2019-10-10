@@ -17,7 +17,7 @@ public class Task {
     private String name;
 
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @Column(name = "task_user_id")
+    @JoinColumn(name = "task_user_id")
     private User cratedBy;
 
     public Task() {
