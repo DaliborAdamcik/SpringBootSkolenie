@@ -11,5 +11,5 @@ import java.util.Optional;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
-    List<Task> findAllByUser(User user);
+    List<Task> findAllByCreatedBy(User createdBy);
 }

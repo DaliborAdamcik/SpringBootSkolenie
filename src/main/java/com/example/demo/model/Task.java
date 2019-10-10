@@ -18,14 +18,14 @@ public class Task {
 
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinColumn(name = "task_user_id")
-    private User cratedBy;
+    private User createdBy;
 
     public Task() {
     }
 
-    public Task(String name, User cratedBy) {
+    public Task(String name, User createdBy) {
         this.name = name;
-        this.cratedBy = cratedBy;
+        this.createdBy = createdBy;
     }
 
     public Long getId() {
@@ -44,11 +44,11 @@ public class Task {
         this.name = name;
     }
 
-    public User getCratedBy() {
-        return cratedBy;
+    public User getCreatedBy() {
+        return createdBy;
     }
 
-    public void setCratedBy(User cratedBy) {
-        this.cratedBy = cratedBy;
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
     }
 }
