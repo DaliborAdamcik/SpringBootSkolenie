@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController()
 @RequestMapping("/api/user")
@@ -26,6 +28,22 @@ public class UserController {
             return userRepo.save(user);
 
         throw new UnsupportedOperationException("Do not use save to make updates");
+    }
+
+    @PostMapping("/login/{userName}")
+    public User verifypassword(@PathVariable("userName") String userName,
+                               @RequestBody Map<String, String> params) {
+
+        Optional<User> user = userRepo.findByName(userName);
+        if (user.isPresent()) {
+            User usr = user.get();
+            if (usr.isPasswordValid(params.get("pass")))
+                return usr;
+        }
+
+        return null;
+
+
     }
 
 }
