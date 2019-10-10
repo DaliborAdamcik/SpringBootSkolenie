@@ -1,5 +1,6 @@
 package com.example.demo.ctrl;
 
+import com.example.demo.exc.InvalidNameOrPasswordException;
 import com.example.demo.model.User;
 import com.example.demo.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class UserController {
                 return usr;
         }
 
-        return null;
+        throw new InvalidNameOrPasswordException("Invalid name or password");
 
 
     }
