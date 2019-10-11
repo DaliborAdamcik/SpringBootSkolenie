@@ -23,8 +23,13 @@ public class TaskController {
 
     @PostMapping
     public Task addTask(@RequestBody Task task, @CurrentUser User user) {
-        System.out.println("Current user is " + user);
+        task.setCreatedBy(user);
         return taskRepo.save(task);
+    }
+
+    @GetMapping("/my")
+    public List<Task> getMyTask(@CurrentUser User user) {
+        return taskRepo.findAllByCreatedBy(user);
     }
 
 }
