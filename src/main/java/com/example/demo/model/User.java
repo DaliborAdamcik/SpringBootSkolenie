@@ -108,4 +108,12 @@ public class User {
         return passwordHash.equals(
                 toSHA1(password + this.salt));
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
